@@ -26,7 +26,15 @@ exports.maths = function(req, res) {
   }else if(op === '!'){
     var response = jsonValues(op,x,y,math.factorielle(n),n);
   }else if(op === 'p'){
-    var response = jsonValues(op,x,y,math.isPrime(n),n)
+    var response = jsonValues(op,x,y,math.isPrime(n),n);
+  }else if(op === 'np'){
+    var response = jsonValues(op,x,y,math.prime(n),n);
+  }else{
+    var response = [
+      {
+        "op" : "operation inexistante"
+      }
+    ]
   }
   
   res.statusCode = 200;
@@ -67,7 +75,7 @@ const jsonValues = (op,x,y,resultat,n) => {
         "value" : 'Infinity'
       }
     ];
-  }else if(op === '!' || op === 'p'){
+  }else if(op === '!' || op === 'p' || op === 'np'){
     var response = [
       {
         "n": n,
