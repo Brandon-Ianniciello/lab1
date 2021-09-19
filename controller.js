@@ -5,14 +5,13 @@ const math = require('./math');
 exports.maths = function(req, res) {
   const reqUrl = url.parse(req.url, true)
 
-  const parsed = query.parse(JSON.stringify(req.url).substr(7));
+  const parsed = query.parse(JSON.stringify(req.url).substr(11));
 
   const op = parsed["op"];
   const x = parseInt(parsed['x']);
   const y = parseInt(parsed['y']);
   const n = parseInt(parsed['n']);
 
-  console.log(0/0)
 
   if(op === ' '){
     var response = jsonValues(op,x,y,math.addition(x,y));
